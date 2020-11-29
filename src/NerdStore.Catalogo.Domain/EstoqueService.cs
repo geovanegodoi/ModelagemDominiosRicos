@@ -8,6 +8,7 @@ namespace NerdStore.Catalogo.Domain
     public class EstoqueService : IEstoqueService
     {
         private const int ESTOQUE_MINIMO = 10;
+        private const int ESTOQUE_MAXIMO = 100;
 
         private readonly IProdutoRepository _produtoRepository;
         private readonly IMediatrHandler _bus;
@@ -51,6 +52,12 @@ namespace NerdStore.Catalogo.Domain
             produto.ReporEstoque(quantidade);
 
             _produtoRepository.Atualizar(produto);
+
+            if (produto.QuantidadeEstoque >= ESTOQUE_MAXIMO)
+            {
+                // Avisar, mandar email, abrir chamado, realizar nova compra
+                await _bus.PublicarEvento(new ProdutoMaximoEstoqueEvent(produto.Id, produto.QuantidadeEstoque));
+            }
 
             return await _produtoRepository.UnitOfWork.Commit();
         }
