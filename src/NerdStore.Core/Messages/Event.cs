@@ -11,5 +11,10 @@ namespace NerdStore.Core.Messages
         {
             Timestamp = DateTime.Now;
         }
+
+        public Event(Guid aggregateId) : base()
+        {
+            AggregateId = aggregateId;
+        }
     }
 }
