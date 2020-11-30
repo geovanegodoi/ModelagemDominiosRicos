@@ -7,8 +7,8 @@ using NerdStore.Core.Bus;
 namespace NerdStore.Catalogo.Domain.Events
 {
     public class ProdutoEventHandler :
-        ICanHandle<ProdutoAbaixoEstoqueEvent>,
-        ICanHandle<ProdutoMaximoEstoqueEvent>
+        ICanHandleEvent<ProdutoAbaixoEstoqueEvent>,
+        ICanHandleEvent<ProdutoMaximoEstoqueEvent>
     {
         private readonly IProdutoRepository _produtoRepository;
 

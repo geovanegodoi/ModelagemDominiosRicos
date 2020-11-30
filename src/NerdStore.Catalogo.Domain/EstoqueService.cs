@@ -11,13 +11,13 @@ namespace NerdStore.Catalogo.Domain
         private const int ESTOQUE_MAXIMO = 100;
 
         private readonly IProdutoRepository _produtoRepository;
-        private readonly IMediatrHandler _bus;
+        private readonly IMediatorHandler _bus;
         
 
-        public EstoqueService(IProdutoRepository produtoRepository, IMediatrHandler mediatrHandler)
+        public EstoqueService(IProdutoRepository produtoRepository, IMediatorHandler mediatorHandler)
         {
             _produtoRepository = produtoRepository;
-            _bus = mediatrHandler;
+            _bus = mediatorHandler;
         }
 
         public async Task<bool> DebitarEstoque(Guid produtoId, int quantidade)
