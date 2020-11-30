@@ -35,6 +35,9 @@
     <ProjectReference Include="..\NerdStore.Vendas.Application\NerdStore.Vendas.Application.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\NerdStore.Vendas.Data\NerdStore.Vendas.Data.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Setup\" />

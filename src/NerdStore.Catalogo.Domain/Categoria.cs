@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using NerdStore.Core.DomainObjects;
+using NerdStore.Core.Messages;
 
 namespace NerdStore.Catalogo.Domain
 {

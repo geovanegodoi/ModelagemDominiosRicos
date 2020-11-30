@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using NerdStore.Catalogo.Application.ViewModels;
 using NerdStore.Catalogo.Domain;
-using NerdStore.Core.DomainObjects;
+using NerdStore.Core.Messages;
 
 namespace NerdStore.Catalogo.Application.Services
 {

@@ -2,7 +2,8 @@
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using NerdStore.Core.Bus;
+using NerdStore.Core.Communication.Mediator;
+using NerdStore.Core.Messages.CommonMessages.DomainEvents;
 
 namespace NerdStore.Catalogo.Domain.Events
 {

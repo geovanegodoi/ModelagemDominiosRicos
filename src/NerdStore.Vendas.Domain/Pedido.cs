@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FluentValidation.Results;
-using NerdStore.Core.DomainObjects;
+using NerdStore.Core.Messages;
 
 namespace NerdStore.Vendas.Domain
 {

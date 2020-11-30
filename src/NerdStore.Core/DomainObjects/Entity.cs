@@ -1,5 +1,5 @@
 ﻿using System;
-namespace NerdStore.Core.DomainObjects
+namespace NerdStore.Core.Messages
 {
     public abstract class Entity
     {

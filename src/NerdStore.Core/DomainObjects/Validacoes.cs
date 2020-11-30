@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace NerdStore.Core.DomainObjects
+namespace NerdStore.Core.Messages
 {
     public class Validacoes
     {

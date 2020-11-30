@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using NerdStore.Catalogo.Application.Services;
-using NerdStore.Core.Bus;
+using NerdStore.Core.Communication.Mediator;
+using NerdStore.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Vendas.Application.Commands;
 
 namespace NerdStore.WebApp.MVC.Controllers
@@ -16,10 +17,10 @@ namespace NerdStore.WebApp.MVC.Controllers
         //private readonly IPedidoQueries _pedidoQueries;
         private readonly IMediatorHandler _mediatorHandler;
 
-        public CarrinhoController(/*INotificationHandler<DomainNotification> notifications,*/
+        public CarrinhoController(ICanHandleNotification<DomainNotification> notifications,
                                   IProdutoAppService produtoAppService, 
-                                  IMediatorHandler mediatorHandler/* 
-                                  IPedidoQueries pedidoQueries*/) : base(/*notifications, */mediatorHandler)
+                                  IMediatorHandler mediatorHandler/*, 
+                                  IPedidoQueries pedidoQueries*/) : base(notifications, mediatorHandler)
         {
             _produtoAppService = produtoAppService;
             _mediatorHandler = mediatorHandler;

@@ -2,8 +2,9 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using NerdStore.Core.Bus;
+using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Messages;
+using NerdStore.Core.Messages.CommonMessages.Notifications;
 using NerdStore.Vendas.Domain;
 
 namespace NerdStore.Vendas.Application.Commands
@@ -15,10 +16,12 @@ namespace NerdStore.Vendas.Application.Commands
         ICanHandleCommand<RemoverItemPedidoCommand>
     {
         private readonly IPedidoRepository _pedidoRepository;
+        private readonly IMediatorHandler _mediatorHandler;
 
-        public PedidoCommandHandler(IPedidoRepository pedidoRepository)
+        public PedidoCommandHandler(IPedidoRepository pedidoRepository, IMediatorHandler mediatorHandler)
         {
             _pedidoRepository = pedidoRepository;
+            _mediatorHandler = mediatorHandler;
         }
 
         public async Task<bool> Handle(AdicionarItemPedidoCommand message, CancellationToken cancellationToken)
@@ -81,6 +84,7 @@ namespace NerdStore.Vendas.Application.Commands
             foreach (var error in message.ValidationResult.Errors)
             {
                 // lancar evento de erro
+                _mediatorHandler.PublicarNotificacao(new DomainNotification(key: message.MessageType, value: error.ErrorMessage));
             }
             return false;
         }

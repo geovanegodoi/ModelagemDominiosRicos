@@ -8,7 +8,12 @@
     <Folder Include="DomainObjects\" />
     <Folder Include="Data\" />
     <Folder Include="Messages\" />
-    <Folder Include="Bus\" />
+    <Folder Include="Communication\" />
+    <Folder Include="Communication\Mediator\" />
+    <Folder Include="Messages\CommonMessages\" />
+    <Folder Include="Messages\CommonMessages\DomainEvents\" />
+    <Folder Include="Messages\CommonMessages\Notifications\" />
+    <Folder Include="Messages\CommonMessages\IntegrationEvents\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MediatR" Version="9.0.0" />
