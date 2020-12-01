@@ -65,21 +65,21 @@ namespace NerdStore.Vendas.Application.Commands
         public async Task<bool> Handle(AplicarVoucherPedidoCommand message, CancellationToken cancellationToken)
         {
             if (!ValidarComando(message)) return false;
-
+            var pedido = await _pedidoRepository.ObterListaPorClienteId(message.ClienteId);
             return true;
         }
 
         public async Task<bool> Handle(AtualizarItemPedidoCommand message, CancellationToken cancellationToken)
         {
             if (!ValidarComando(message)) return false;
-
+            var pedido = await _pedidoRepository.ObterListaPorClienteId(message.ClienteId);
             return true;
         }
 
         public async Task<bool> Handle(RemoverItemPedidoCommand message, CancellationToken cancellationToken)
         {
             if (!ValidarComando(message)) return false;
-
+            var pedido = await _pedidoRepository.ObterListaPorClienteId(message.ClienteId);
             return true;
         }
 
