@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using NerdStore.Catalogo.Data.Mappings;
 using NerdStore.Catalogo.Domain;
 using NerdStore.Core.Data;
@@ -47,6 +48,18 @@ namespace NerdStore.Catalogo.Data
                 }
             }
             return await base.SaveChangesAsync() > 0;
+        }
+    }
+
+
+    public class CatalogoContextFactory : IDesignTimeDbContextFactory<CatalogoContext>
+    {
+        public CatalogoContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<CatalogoContext>();
+            optionsBuilder.UseSqlServer(connectionString: "Server=localhost,1401;Database=nerdstore;User Id=sa;Password=123foxconn$;");
+
+            return new CatalogoContext(optionsBuilder.Options);
         }
     }
 }

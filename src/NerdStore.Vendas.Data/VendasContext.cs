@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using NerdStore.Core.Communication.Mediator;
 using NerdStore.Core.Data;
 using NerdStore.Core.Messages;
@@ -13,6 +15,11 @@ namespace NerdStore.Vendas.Data
     {
         private readonly IMediatorHandler _mediatorHandler;
 
+        public VendasContext(DbContextOptions<VendasContext> options)
+            : base(options)
+        {
+
+        }
 
         public VendasContext(DbContextOptions<VendasContext> options, IMediatorHandler mediatorHandler)
             : base(options)
@@ -61,6 +68,17 @@ namespace NerdStore.Vendas.Data
 
             modelBuilder.HasSequence<int>("MinhaSequencia").StartsAt(1000).IncrementsBy(1);
             base.OnModelCreating(modelBuilder);
+        }
+    }
+
+    public class VendasContextFactory : IDesignTimeDbContextFactory<VendasContext>
+    {
+        public VendasContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<VendasContext>();
+            optionsBuilder.UseSqlServer(connectionString: "Server=localhost,1401;Database=nerdstore;User Id=sa;Password=123foxconn$;");
+
+            return new VendasContext(optionsBuilder.Options);
         }
     }
 }
