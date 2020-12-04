@@ -67,7 +67,7 @@ namespace NerdStore.WebApp.MVC.Controllers
             var produto = await _produtoAppService.ObterPorId(id);
             if (produto == null) return BadRequest();
 
-            var command = new RemoverItemPedidoCommand(ClienteId, id);
+            var command = new RemoverItemPedidoCommand(ClienteId, produto.Id);
             await _mediatorHandler.EnviarComando(command);
 
             if (OperacaoValida())
@@ -85,7 +85,7 @@ namespace NerdStore.WebApp.MVC.Controllers
             var produto = await _produtoAppService.ObterPorId(id);
             if (produto == null) return BadRequest();
 
-            var command = new AtualizarItemPedidoCommand(ClienteId, id, quantidade);
+            var command = new AtualizarItemPedidoCommand(ClienteId, produto.Id, quantidade);
             await _mediatorHandler.EnviarComando(command);
 
             if (OperacaoValida())

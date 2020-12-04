@@ -39,14 +39,14 @@ namespace NerdStore.Vendas.Domain
 
         public ValidationResult AplicarVoucher(Voucher voucher)
         {
-            //var validationResult = voucher.ValidarSeAplicavel();
-            //if (!validationResult.IsValid) return validationResult;
+            var validationResult = voucher.ValidarSeAplicavel();
+            if (!validationResult.IsValid) return validationResult;
 
             Voucher = voucher;
             VoucherUtilizado = true;
             CalcularValorPedido();
 
-            return new ValidationResult();
+            return validationResult;
         }
 
         public void CalcularValorPedido()

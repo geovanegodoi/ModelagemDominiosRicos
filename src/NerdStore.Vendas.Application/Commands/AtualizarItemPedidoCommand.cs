@@ -1,5 +1,6 @@
 ﻿using System;
 using FluentValidation;
+using FluentValidation.Results;
 using NerdStore.Core.Messages;
 
 namespace NerdStore.Vendas.Application.Commands
@@ -17,6 +18,11 @@ namespace NerdStore.Vendas.Application.Commands
             ClienteId = clienteId;
             ProdutoId = produtoId;
             Quantidade = quantidade;
+        }
+
+        public override bool EhValido()
+        {
+            return new AtualizarItemPedidoValidation().Validate(this).IsValid;
         }
     }
 
